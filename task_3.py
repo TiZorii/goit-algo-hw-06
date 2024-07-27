@@ -1,3 +1,5 @@
+import networkx as nx
+
 def dijkstra(graph, start):
     shortest_paths = {start: (None, 0)}
     current_node = start
@@ -39,5 +41,5 @@ G_weighted = nx.Graph()
 for u, v, w in weighted_connections:
     G_weighted.add_edge(u, v, weight=w)
 
-shortest_paths = dijkstra(G_weighted, start_airport)
-print(f"Shortest paths from {start_airport}: {shortest_paths}")
+shortest_paths = dijkstra(G_weighted, "JFK")
+print(f"Shortest paths from JFK: {shortest_paths}")

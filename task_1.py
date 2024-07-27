@@ -22,7 +22,8 @@ G.add_edges_from(connections)
 
 # Візуалізація графа
 plt.figure(figsize=(10, 8))
-nx.draw(G, with_labels=True, node_size=3000, node_color="skyblue", font_size=15, font_color="black", font_weight="bold")
+pos = nx.spring_layout(G)
+nx.draw(G, pos, with_labels=True, node_size=3000, node_color="skyblue", font_size=15, font_color="black", font_weight="bold")
 plt.title("Airport Network Graph")
 plt.show()
 
@@ -30,3 +31,6 @@ plt.show()
 print(f"Number of nodes: {G.number_of_nodes()}")
 print(f"Number of edges: {G.number_of_edges()}")
 print(f"Degrees: {dict(G.degree())}")
+print(f"Average degree: {sum(dict(G.degree()).values()) / G.number_of_nodes()}")
+print(f"Clustering coefficient: {nx.average_clustering(G)}")
+print(f"Density: {nx.density(G)}")
